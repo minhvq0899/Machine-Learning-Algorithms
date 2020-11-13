@@ -3,7 +3,7 @@ from sklearn.datasets import load_boston
 
 boston = load_boston()
 
-X = pd.DataFrame(boston.data, columns=boston.feature_names)
+X = pd.DataFrame(boston.data, columns = boston.feature_names)
 y = pd.DataFrame(boston.target)
 
 print(X.shape, y.shape)
