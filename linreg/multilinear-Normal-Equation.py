@@ -1,4 +1,4 @@
-from load_boston import *
+from load-boston import *
 import numpy as np
 
 # Building Xbar 
