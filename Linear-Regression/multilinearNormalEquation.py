@@ -1,4 +1,8 @@
-from load-boston import *
+#import sys
+
+#sys.path.append("C:\\Users\\minhv\\Machine-Learning-Algorithms\\Linear-Regression")
+
+from loadboston import X,y
 import numpy as np
 
 # Building Xbar 
