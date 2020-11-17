@@ -2,6 +2,7 @@ from load-boston import *
 import numpy as np
 
 # Building Xbar 
+# We need to add a column of 1s in front of X so the final result will yield another element, which is theta 0
 one = np.ones((X.shape[0], 1)) # 506 rows, 1 column of 1s
 Xbar = np.concatenate((one, X), axis = 1) # 506 columns, 14 rows
 
