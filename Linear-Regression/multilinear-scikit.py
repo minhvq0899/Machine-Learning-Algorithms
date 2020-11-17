@@ -1,8 +1,8 @@
 import sys
 
-sys.path.append("C:\\Users\\minhv\\Machine-Learning-Algorithms\\linreg")
+sys.path.append("C:\\Users\\minhv\\Machine-Learning-Algorithms\\Linear Regression")
 
-from multilinear-Normal-Equation import Xbar, y, w
+from multilinear-Normal-Equation import *
 from sklearn.linear_model import LinearRegression
 
 # fit the model by Linear Regression

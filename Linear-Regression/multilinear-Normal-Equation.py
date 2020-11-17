@@ -6,8 +6,6 @@ import numpy as np
 one = np.ones((X.shape[0], 1)) # 506 rows, 1 column of 1s
 Xbar = np.concatenate((one, X), axis = 1) # 506 columns, 14 rows
 
-print("\nXbar:\n ", Xbar)
-print("\nXbar's shape: ", Xbar.shape)
 
 # Calculating weights of the fitting line 
 A = np.dot(Xbar.T, Xbar)
