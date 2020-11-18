@@ -26,20 +26,37 @@ def cost(w):
     N = Xbar.shape[0] # number of rows/ instances/ observations
     return .5/N*np.linalg.norm(y - Xbar.dot(w), 2)**2
 
-def myGD(w_init, grad, eta):
+
+def myGD(w_init, n_iterations, eta, grad):
     w = [w_init]
-    for it in range(1000):
+    for it in range(n_iterations):
         w_new = w[-1] - eta*grad(w[-1])
-        if np.linalg.norm(grad(w_new))/len(w_new) < 1e-3:
+        # đến khi nào trung bình cộng của cả 14 gradient là đủ nhỏ thì ta dùng lại 
+        norm = np.linalg.norm(grad(w_new))/len(w_new)
+        print(norm)
+        if norm < 1e-3: 
             break 
         w.append(w_new)
     return (w, it) 
 
 
+def GD(w_init, n_iterations, eta, grad):
+    for it in range(n_iterations):
+        gradients = grad(w)
+        w = w - eta * gradients
+    
+    return w
+
+
 # --------------------------------------compute w using gradient-------------------------------------------
-w_init = np.array([[2], [1]])
-(w1, it1) = myGD(w_init, grad, 0.1)
-print('Solution found by GD: w = ', w1[-1].T, ',\nafter %d iterations.' %(it1+1))
+w_init = np.array([[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]) # 14 rows, 1 column 
+
+# print("w_init: ", w_init, ", type is ", str(type(w_init)), ", shape is ", str(w_init.shape))
+# print("[w_init]: ", [w_init], "type is ", str(type([w_init])))
+
+(w_final, it_final) = myGD(w_init, 20000, 0.000005, grad)
+
+print('Solution found by GD: w = ', w_final[-1].T, ',\nafter %d iterations.' %(it_final+1))
 
 
 
