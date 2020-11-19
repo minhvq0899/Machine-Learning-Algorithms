@@ -1,3 +1,11 @@
+"""
+================================= Gradient Descent with one variable for Lin Reg =================================
+
+All credit to Tiep Vu - the author of 'Machine Learning co ban'
+I am replicating his code (with a few changes) for studying purpose only
+
+"""
+
 # -------------------------import-------------------------
 import math
 import numpy as np 

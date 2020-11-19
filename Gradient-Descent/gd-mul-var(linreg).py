@@ -1,3 +1,10 @@
+"""
+================================= Gradient Descent with multiple variables for Lin Reg =================================
+
+All credit to Tiep Vu - the author of 'Machine Learning co ban'
+I am replicating his code (with a few changes) for studying purpose only
+
+"""
 import math
 import numpy as np 
 import matplotlib.pyplot as plt
