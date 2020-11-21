@@ -35,12 +35,13 @@ reg.fit(Xbar, y)
 print( 'Solution found by scikit-learn : ', reg.coef_ )
 
 # ------------------- plot data -------------------
+X_line = np.linspace(0, 100, 1000)
+X_line = np.c_[np.ones((1000, 1)), X_line]
+y_line = reg.predict(X_line)
 plt.plot(X, y, "b.")
-# plt.plot(X_new, y_predict, "r-")
-# plt.plot(X_new, y_predict, "r-")
+plt.plot(X_line, y_line, "r-")
 plt.xlabel("$Age$", fontsize=10)
 plt.ylabel("$Price$", rotation=0, fontsize=10)
-# plt.axis([0, 2, 0, 15])
 plt.show()
 
 
