@@ -1,5 +1,5 @@
 """
-========================================= Different Varients of Gradient Descent =========================================
+========================================= Stochastic Gradient Descent =========================================
         
 All credit to Tiep Vu (the author of 'Machine Learning co ban') and Aurélien Geron (the author of Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow)
 I am replicating their code (with a few changes) for studying purpose only
@@ -10,7 +10,8 @@ Content of this code:
     1.2. Aurélien Geron's code
 
 2. Animation
-
+    2.1. Tiep Vu's animation
+    2.2. Aurélien Geron's animation
 """
 
 import numpy as np 
@@ -80,7 +81,7 @@ def SGD_tiepvu(w_init, n_epochs, eta, sgrad):
 
 # SGD from Aurélien Geron's
 def learning_schedule(t):
-    t0, t1 = 50, 75  # learning schedule hyperparameters
+    t0, t1 = 50, 150  # learning schedule hyperparameters
     return t0 / (t + t1)
      
 def SGD_ageron(theta_init, n_epochs, sgrad):
@@ -96,7 +97,7 @@ def SGD_ageron(theta_init, n_epochs, sgrad):
             g = sgrad(theta[-1], i, rd_id)
             eta_current = learning_schedule(count) # this means eta (learning rate) will gradually get smaller
             eta_ageron.append(eta_current)
-            theta_new = theta[-1] - eta * g
+            theta_new = theta[-1] - eta_current * g
             theta.append(theta_new)
             if count % 10 == 0: # check after every 10 iterations
                 theta_this_check = theta_new                 
@@ -135,7 +136,7 @@ theta_init, w_init = np.array([[2], [1]]), np.array([[2], [1]])
 # Compute theta using Tiep's SGD
 eta = 0.1
 (w_tiep, it_tiep) = SGD_tiepvu(w_init, 10, eta, sgrad)
-print("w_tiep using SGD_tiepvu: {0}, after {1} iterations and achieve norm 2 of gradient at {2}".format(w_tiep[-1].T, it_tiep, round(np.linalg.norm(grad(w_tiep[-1])), 3)))
+print("w_tiep using SGD_tiepvu: {0}, after {1} iterations and achieve norm 2 of gradient at {2} \n".format(w_tiep[-1].T, it_tiep, round(np.linalg.norm(grad(w_tiep[-1])), 3)))
 # print("Gradient is small enough (<1e-3) at: ", np.linalg.norm(grad(w_tiep[-1])))  
 
 def update_tiep(ii):
@@ -168,7 +169,7 @@ plt.show()
 # Animation Plot
 # Compute theta using Aurélien Geron's SGD
 (theta_ageron, eta_ageron, it_ageron) = SGD_ageron(theta_init, 10, sgrad)
-print("\ntheta_ageron using SGD_ageron: {0}, after {1} iterations and achieve norm 2 of gradient at {2}".format(theta_ageron[-1].T, it_ageron, round(np.linalg.norm(grad(theta_ageron[-1])), 3)))
+print("theta_ageron using SGD_ageron: {0}, after {1} iterations and achieve norm 2 of gradient at {2}\n    ".format(theta_ageron[-1].T, it_ageron, round(np.linalg.norm(grad(theta_ageron[-1])), 3)))
 # print("Gradient is small enough (<1e-3) at: ", np.linalg.norm(grad(theta_ageron[-1])))  
 
 def update_ageron(ii):
@@ -193,7 +194,7 @@ fig, ax = plt.subplots(figsize=(4,4))
 plt.cla()
 plt.axis([1.5, 7, 0.5, 4.5])
 
-anim1 = FuncAnimation(fig, update_ageron, frames=np.arange(0, it_ageron), interval=10)
+anim1 = FuncAnimation(fig, update_ageron, frames=np.arange(0, it_ageron), interval=100)
 plt.show() 
 
 
