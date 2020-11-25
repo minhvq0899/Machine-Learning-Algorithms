@@ -9,15 +9,16 @@ Content of this code:
     1.1. Tiep Vu's toy data
     1.2. Aurélien Geron's toy data
 2. Build K-mean algorithms using only numpy 
-    2.1. Test on X_tiepvu using functions above
-    2.2. Test on X_tiepvu using Scikit-learn Kmeans 
-
+3. Testing
+    3.1. Test on X_tiepvu using functions above
+    3.2. Test on X_tiepvu using Scikit-learn Kmeans 
 
 """ 
 import numpy as np
 import matplotlib 
 import matplotlib.pyplot as plt
 np.random.seed(11) 
+from sklearn.cluster import KMeans
 
 # =========================================================== Toy data ===========================================================
 # -------------------------- Tiep Vu's toy data --------------------------
@@ -46,11 +47,9 @@ def kmeans_display(X, label):
     plt.plot(X1[:, 0], X1[:, 1], 'go', markersize = 4, alpha = .8)
     plt.plot(X2[:, 0], X2[:, 1], 'rs', markersize = 4, alpha = .8)
 
-    plt.axis('equal')
+    # plt.axis('equal')
     plt.plot()
     plt.show()
-    
-kmeans_display(X_tiepvu, original_label_tiepvu)
 
 
 # -------------------------- Aurélien Geron's toy data --------------------------
@@ -67,15 +66,12 @@ blob_std = np.array([0.4, 0.3, 0.3, 0.25, 0.25])
 X_ageron, original_label_ageron = make_blobs(n_samples=2000, centers=blob_centers, cluster_std=blob_std, random_state=7)
 
 # plot
-def plot_clusters(X):
-    plt.scatter(X[:, 0], X[:, 1], c=original_label_ageron, s=1)
+def plot_clusters(X, ylabel = None):
+    plt.figure(figsize=(12, 6))
+    plt.scatter(X[:, 0], X[:, 1], c=ylabel, s=1)
     plt.xlabel("$x_1$", fontsize=14)
     plt.ylabel("$x_2$", fontsize=14, rotation=0)
-
-plt.figure(figsize=(12, 6))
-plot_clusters(X_ageron)
-plt.show()
-
+    plt.show()
 
 
 
@@ -89,6 +85,7 @@ def kmeans_init_centers(X, k):
     # randomly pick k rows of X as initial centers
     return X[np.random.choice(X.shape[0], k, replace=False)]
 
+# go through every point in X and assign each of them a label 
 def kmeans_assign_labels(X, centers):
     # calculate pairwise distances between data and centers
     D = cdist(X, centers)
@@ -133,43 +130,47 @@ def kmeans(X, K):
 
 
 
-# ------------------------- Test on X_tiepvu using functions above -------------------------
-(centers_tiepvu, labels_tiepvu, it_tiepvu) = kmeans(X_tiepvu, K) # K = 3
-# kmeans_display(X_tiepvu, labels_tiepvu[-1])
+# ========================================================== Testing ==========================================================
 
-# -------------------------- Test on X_tiepvu using Scikit-learn Kmeans --------------------------
-from sklearn.cluster import KMeans
+if __name__ == "__main__":
+    # plot data
+    kmeans_display(X_tiepvu, original_label_tiepvu)
+    plot_clusters(X_ageron, original_label_ageron)
 
-kmeans_tiepvu = KMeans(n_clusters=3, random_state=0).fit(X_tiepvu)
+    # ------------------------- Test on X_tiepvu using functions above -------------------------
+    (centers_tiepvu, labels_tiepvu, it_tiepvu) = kmeans(X_tiepvu, K) # K = 3
+    # kmeans_display(X_tiepvu, labels_tiepvu[-1])
 
-print("Result for Tiep Vu\n")
-print('Centers initialized: ', means, '\n')
-print('Centers found by our algorithm: ', centers_tiepvu[-1], '\n')
-print('Centers found by scikit-learn:', kmeans_tiepvu.cluster_centers_, '\n')
- 
-# pred_label = kmeans.predict(X)
-# kmeans_display(X, pred_label)
+    # -------------------------- Test on X_tiepvu using Scikit-learn Kmeans --------------------------
+    kmeans_tiepvu = KMeans(n_clusters=3, random_state=0).fit(X_tiepvu)
+
+    print("Result for Tiep Vu\n")
+    print('Centers initialized: ', means, '\n')
+    print('Centers found by our algorithm: ', centers_tiepvu[-1], '\n')
+    print('Centers found by scikit-learn:', kmeans_tiepvu.cluster_centers_, '\n')
+    
+    # pred_label = kmeans.predict(X)
+    # kmeans_display(X, pred_label)
 
 
 
 
+    # ------------------------- Test on X_ageron using functions above -------------------------
+    print('-----------------------------------------------------------------------------------------')
+    (centers_ageron, labels_ageron, it_ageron) = kmeans(X_ageron, 5) 
+    # plot_clusters(X_ageron, labels_ageron[-1])
 
-# ------------------------- Test on X_ageron using functions above -------------------------
-print('-----------------------------------------------------------------------------------------')
-(centers_ageron, labels_ageron, it_ageron) = kmeans(X_ageron, 5) 
-# kmeans_display(X_tiepvu, labels_tiepvu[-1])
+    # -------------------------- Test on X_ageron using Scikit-learn Kmeans --------------------------
+    kmeans_ageron = KMeans(n_clusters=5, random_state=0).fit(X_ageron)
 
-# -------------------------- Test on X_ageron using Scikit-learn Kmeans --------------------------
-kmeans_ageron = KMeans(n_clusters=5, random_state=0).fit(X_ageron)
-
-print("Result for Geron\n")
-print('Centers initialized: ', blob_centers, '\n')
-print('Centers found by our algorithm: ', centers_ageron[-1], '\n')
-print('Centers found by scikit-learn:', kmeans_ageron.cluster_centers_, '\n')
-print('Label found by our algorithm:', labels_ageron[-1], '\n')
- 
-# pred_label = kmeans.predict(X)
-# kmeans_display(X, pred_label)
+    print("Result for Geron\n")
+    print('Centers initialized: ', blob_centers, '\n')
+    print('Centers found by our algorithm: ', centers_ageron[-1], '\n')
+    print('Centers found by scikit-learn:', kmeans_ageron.cluster_centers_, '\n')
+    print('Label found by our algorithm:', labels_ageron[-1], '\n')
+    
+    # pred_label = kmeans.predict(X)
+    # kmeans_display(X, pred_label)
 
 
 
