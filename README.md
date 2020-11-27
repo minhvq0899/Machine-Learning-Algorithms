@@ -18,6 +18,8 @@ If you are Vietnamese and you want to learn more about Machine Learning, make su
 
 ![](https://sachvui.com/cover/2018/machine-learning-co-ban.jpg)
 
+<img src="https://sachvui.com/cover/2018/machine-learning-co-ban.jpg" width="200" height="200" />
+
 You can also check out Aurélien's [book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and [code](https://github.com/ageron/handson-ml2) here. 
 
 ![](https://images-na.ssl-images-amazon.com/images/I/81kv0vHJ0QL.jpg)
