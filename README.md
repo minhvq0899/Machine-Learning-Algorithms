@@ -23,7 +23,7 @@ If you are Vietnamese and you want to learn more about Machine Learning, make su
 You can also check out Aurélien's [book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and [code](https://github.com/ageron/handson-ml2) here. 
 
 <p align="center">
-  <img src="https://images-na.ssl-images-amazon.com/images/I/81kv0vHJ0QL.jpg" width="300" height="430" />
+  <img src="https://images-na.ssl-images-amazon.com/images/I/81kv0vHJ0QL.jpg" width="250" height="350" />
 </p>
 
 Make sure to support both authors by buying the paperback book. 
