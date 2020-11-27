@@ -16,10 +16,10 @@ All the credit to Tiep Vu (the author of 'Machine Learning co ban') and Aurélie
 
 If you are Vietnamese and you want to learn more about Machine Learning, make sure to check out Tiep's work. Here is the [link](https://machinelearningcoban.com/) to his blog "Machine Learning co ban" and the [link](https://github.com/tiepvupsu/ebookMLCB) to his code. 
 
-![]("https://sachvui.com/cover/2018/machine-learning-co-ban.jpg")
+![](https://sachvui.com/cover/2018/machine-learning-co-ban.jpg)
 
 <p align="center">
-  <img src="https://sachvui.com/cover/2018/machine-learning-co-ban.jpg" width="500" height="675" />
+  <img src="https://sachvui.com/cover/2018/machine-learning-co-ban.jpg" width="250" height="350" />
 </p>
 
 You can also check out Aurélien's [book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and [code](https://github.com/ageron/handson-ml2) here. 
