@@ -1,4 +1,6 @@
 """
+Author: Minh Q. Vu
+
 ================================================== Logistic Regression ==================================================
         
 All credit to Tiep Vu (the author of 'Machine Learning co ban') and Aurélien Geron (the author of Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow)
@@ -15,7 +17,8 @@ Content of this code:
 3. Main function
     3.1.    find w for 1D data
     3.2.    plot for 1D data
-    3.3.    
+    3.3.    find w for 2D data
+    3.4.    plot for 2D data
 
 """ 
 
